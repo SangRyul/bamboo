@@ -93,11 +93,28 @@ print(scaled_data) # ['안도현', '연탄재', '발', '한번', '사람', '연�
                 filtered_nouns.append(word)
     return filtered_nouns
 
+def check_count_nouns(nouns_list):
+    '''
+    
+    :param nouns_list: scaling nouns data list
+    
+    :return: 
+    dictionary {word: frequency}
+    '''
+    d ={}
+    for word in nouns_list:
+        if word in d.keys():
+            d[word] += 1
+        else:
+            d[word] = 1
+
+    return d
+
 if __name__ == "__main__":
 
     text_file_directory = 'data/'
 
-    text_file_number = 40031
+    text_file_number = 40030
     text_file_name = str(text_file_number) + '.txt'
 
     text_file = text_file_directory + text_file_name
@@ -106,6 +123,8 @@ if __name__ == "__main__":
 
     data = f.read()
 
+    pos_data = T.pos(data, norm= True)
 
-    print(filtering_data(data, filter_pronouns))
-
+    for i in enumerate(pos_data):
+        if pos_data[i[0]][1] =='Josa':
+            print(pos_data[i[0]-1])
