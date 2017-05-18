@@ -27,4 +27,11 @@ for text_file_number in range(22829, 22750, -1):
 
 import operator
 summery_data = sorted(summery_data.items(), key=operator.itemgetter(1), reverse=True)
-print(summery_data)
+import word_cloud
+
+
+tags = word_cloud.get_tags(summery_data)
+print(tags)
+#{'tag': '행위', 'color': (246, 218, 233), 'size': 80}
+
+word_cloud.draw_cloud(tags, 'wordcloud.png')
