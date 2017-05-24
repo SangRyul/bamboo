@@ -110,6 +110,25 @@ def check_count_nouns(nouns_list):
 
     return d
 
+
+def most_common_words_filter(deep):
+    '''
+    
+    :param deep: top #(deep) in most_common_korean_words.txt
+    :return: fileter most_common_words
+    usage:
+    filter = filter+scaling.most_common_words_filter(100)
+    scaled = scaling.filtering_data(data, filter)
+    '''
+    f = open("../data/most_common_korean_words.txt")
+    most_common_words = []
+    for i in range(deep):
+        most_common_word = f.readline().rstrip('\n')
+        most_common_words.append(most_common_word)
+
+    return most_common_words
+
+
 if __name__ == "__main__":
 
     text_file_directory = 'data/'
@@ -128,3 +147,4 @@ if __name__ == "__main__":
     for i in enumerate(pos_data):
         if pos_data[i[0]][1] =='Josa':
             print(pos_data[i[0]-1])
+
