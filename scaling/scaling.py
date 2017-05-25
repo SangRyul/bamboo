@@ -21,7 +21,7 @@ from konlpy.tag import Twitter
 H = Hannanum()
 T = Twitter()
 filter_pronouns = ['나', '너', '우리', '저', '저희', '그', '그녀', '그것', '것', '자기', '자네', '누구', '누구나', '아무', '아무나', '내']
-def filtering_data(data, filter):
+def filtering_data(data:str, filter:list):
     '''
 :param data: text data (type : str)
        filter : don't want data (If filter doesn't have pronouns, filtered text list has pronouns. So I recommend 
@@ -93,7 +93,7 @@ print(scaled_data) # ['안도현', '연탄재', '발', '한번', '사람', '연�
                 filtered_nouns.append(word)
     return filtered_nouns
 
-def check_count_nouns(nouns_list):
+def check_count_nouns(nouns_list:list):
     '''
     
     :param nouns_list: scaling nouns data list
@@ -111,7 +111,7 @@ def check_count_nouns(nouns_list):
     return d
 
 
-def most_common_words_filter(deep):
+def most_common_words_filter(deep:int):
     '''
     
     :param deep: top #(deep) in most_common_korean_words.txt
@@ -120,7 +120,7 @@ def most_common_words_filter(deep):
     filter = filter+scaling.most_common_words_filter(100)
     scaled = scaling.filtering_data(data, filter)
     '''
-    f = open("../data/most_common_korean_words.txt")
+    f = open("most_common_korean_words.txt")
     most_common_words = []
     for i in range(deep):
         most_common_word = f.readline().rstrip('\n')
