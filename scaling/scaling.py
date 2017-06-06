@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 
+<<<<<<< HEAD
 # python version 3.5
 # requirement library
 # jpype1  version 0.6.2
@@ -14,12 +15,15 @@
 # java version "1.7.0_80"
 # Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
 # Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
+=======
+>>>>>>> origin/scaling_data
 
 from konlpy.tag import Hannanum
 from konlpy.tag import Twitter
 
 H = Hannanum()
 T = Twitter()
+<<<<<<< HEAD
 filter_pronouns = ['나', '너', '우리', '저', '저희', '그', '그녀', '그것', '것', '자기', '자네', '누구', '누구나', '아무', '아무나', '내']
 def filtering_data(data:str, filter:list):
     '''
@@ -80,16 +84,26 @@ print(scaled_data) # ['안도현', '연탄재', '발', '한번', '사람', '연�
 
 
     '''
+=======
+filter_pronouns = ['나', '너', '네','우리', '저', '저희', '그', '그녀', '그것', '것', '자기', '자네', '누구', '누구나', '아무', '아무나', '내']
+def getFilteredData(data:str, filter:list):
+>>>>>>> origin/scaling_data
     h_nouns = H.nouns(data)
     t_nouns = T.nouns(data)
 
 
+<<<<<<< HEAD
     filtered_nouns = []
+=======
+    output = []
+
+>>>>>>> origin/scaling_data
 
 
     for word in h_nouns:
         if word in t_nouns:
             if word not in filter:
+<<<<<<< HEAD
                 filtered_nouns.append(word)
     return filtered_nouns
 
@@ -97,10 +111,20 @@ def check_count_nouns(nouns_list:list):
     '''
     
     :param nouns_list: scaling nouns data list
+=======
+                output.append(word)
+    return output
+
+def getCountNouns(nouns:list):
+    '''
+    
+    :param nouns: scaling nouns data list
+>>>>>>> origin/scaling_data
     
     :return: 
     dictionary {word: frequency}
     '''
+<<<<<<< HEAD
     d ={}
     for word in nouns_list:
         if word in d.keys():
@@ -116,11 +140,29 @@ def most_common_words_filter(deep:int):
     
     :param deep: top #(deep) in most_common_korean_words.txt
     :return: fileter most_common_words
+=======
+    countNouns ={}
+    for word in nouns:
+        if word in countNouns.keys():
+            countNouns[word] += 1
+        else:
+            countNouns[word] = 1
+
+    return countNouns
+
+
+def getMostCommonWords(deep:int):
+    '''
+    
+    :param deep: top #(deep) in most_common_korean_words.txt
+    :return: fileter commonWords
+>>>>>>> origin/scaling_data
     usage:
     filter = filter+scaling.most_common_words_filter(100)
     scaled = scaling.filtering_data(data, filter)
     '''
     f = open("most_common_korean_words.txt")
+<<<<<<< HEAD
     most_common_words = []
     for i in range(deep):
         most_common_word = f.readline().rstrip('\n')
@@ -147,4 +189,15 @@ if __name__ == "__main__":
     for i in enumerate(pos_data):
         if pos_data[i[0]][1] =='Josa':
             print(pos_data[i[0]-1])
+=======
+    commonWords = []
+    for i in range(deep):
+        wordlist = f.readline().rstrip('\n')
+        commonWords.append(wordlist)
+
+    return commonWords
+
+
+##if __name__ == "__main__":
+>>>>>>> origin/scaling_data
 
