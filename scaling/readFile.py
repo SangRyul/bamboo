@@ -5,12 +5,13 @@ import datetime
 import os
 
 
-global date
-global data
 
 def read(textfilename:str):
     if os.path.isfile(textfilename):
         f = open(textfilename)
+
+        global date
+        global data
         date = datetime.datetime.strptime(f.readline(), "%Y년 %m월 %d일 %p %H:%M ")
         data = f.read()
 
